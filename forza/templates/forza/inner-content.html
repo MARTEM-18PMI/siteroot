@@ -1,0 +1,93 @@
+{% extends 'forza/base.html' %}
+<!--{% block title %} {{ blog.title }} {% endblock %}-->
+{% block content%}
+{% load static%}
+<div class="main-header-inner-content">
+    <h1 class="page-title">Внутриигровой контент</h1>
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'index' %}">Главная страница</a></li>
+        <li><a href="{% url 'inner'%}">Внутриигровой контент</a></li>
+    </ul>
+</div>
+<div class="in-game">
+  <h2>Автомобили</h2>
+  <ol style="margin-right: 50px;">
+      <li>
+          <p> Передний привод</p>
+            <div class="auto-content" >
+              <h2>Honda Civic Type R (2018)</h2>
+              <center>
+                    <img src="{% static 'forza/img/civic.jpg' %}" width="50%" height="50%" title="Honda Civic Type R (2018)">
+              </center>
+              <p class="disc"><b>Описание:</b></p>
+              <p class="full">The 2018 Civic Type R is the performance model of the tenth generation Honda Civic, replacing the 2016 Civic Type R of the ninth generation Civic hatchback. The Forza series        features the United States specification model, which actually makes it the first Type R available for the United States.
+
+                  With this generation of the Type R, Honda reintroduced an independent rear suspension, while further refining the car's already outstanding aerodynamics with front tire air curtains and vortex generators on the roof. Its K20C1 engine was also used by its predecessor, although it comes with additional power on European and Japanese models.
+
+                  Similar to its predecessor, the 2018 Type R also set a new lap record for FWD cars at the Nürburingring, which was completed in 7:43.8 min.
+              </p>
+        </div>
+        <div class="auto-content">
+            <h2>MINI Cooper S</h2>
+            <center>
+                <img src="{% static 'forza/img/mini.jpg' %}" width="50%" height="50%" title="MINI Cooper S">
+            </center>
+            <p class="disc"><b>Описание:</b></p>
+            <p class="full">The 1965 Mini Cooper S is a sport compact by Mini featured in Forza Horizon and all subsequent main series titles.
+              It is available as a Skill Shop reward in Forza Horizon 3 and can be discovered as a Barn Find in Forza Horizon 4.
+              It also appears as a traffic vehicle in Forza Horizon 4.
+              In Forza Horizon 3, it available since the October 14, 2016 update as a Horizon Edition model variant with a Credits boost and performance upgraded to C class that can be increased to A class with an upgrade preset. It is obtainable as a Horizon Wheelspin reward.
+            </p>
+        </div>
+        <div class="auto-content">
+          <h2>Volkswagen Golf GTI</h2>
+            <center>
+                <img src="{% static 'forza/img/golf.jpg'%}" width="50%" height="50%" title="Volkswagen Golf GTI">
+            </center>
+            <p class="disc"><b>Описание:</b></p>
+            <p class="full">The 1983 Volkswagen Golf GTI, abbreviated as VW Golf GTI '83, is a hot hatch by Volkswagen featured in Forza Horizon 4. It can be purchased directly from the Autoshow.The 1983 Golf GTI (Gran Turismo Injection) is the final model year of the Mk1 Golf GTI that was available in North America as the Rabbit GTI. It was replaced in 1984 by the Mk2 GTI.
+
+            Often credited for pioneering the hot hatch, the GTI combined a lightweight two-door Golf body with a zippy 1.8 liter with fuel injection. Its EA827 engine produces 112 hp (84 kW) at 5800 rpm and 109 ft·lb (148 N·m) of torque at 3500 rpm.
+
+            From the outside, the GTI was recognized by a chin spoiler, front grille with red accents and plastic over fenders. Its interior has a tartan upholstery and a golf ball shaped shift lever. Many of its styling elements can also be found in newer GTI models.
+            </p>
+        </div>
+        <div class="auto-content">
+            <h2>James Bond Edition Citroën 2CV6</h2>
+            <center>
+                  <img src="{% static 'forza/img/citr.jpg' %}" width="50%" height="50%" title="James Bond Edition Citroën 2CV6">
+            </center>
+            <p class="disc"><b>Описание:</b></p>
+            <p class="full">The 1981 James Bond Edition Citroën 2CV6, abbreviated as Citroën 2CV6 JB, is a custom variant of the Citroën 2CV featured in Forza Horizon 4 as part of the Best of Bond Car Pack.The James Bond Edition 2CV6 was featured in For Your Eyes Only.
+            </p>
+
+        </div>
+      </li>
+
+      <li>
+          <p>Полный привод (AWD)
+      </li>
+
+      <li>
+          <p>Задний привод (RWD)</p>
+      </li>
+  </ol>
+  <h2>Испытания</h2>
+  <ul>
+      <li>Сезонные
+          <ul>
+              <li>Forzathon</li>
+              <li>Смелые выходки</li>
+          </ul>
+      </li>
+      <li>Постоянные</li>
+  </ul>
+</div>
+{% endblock %}
+
+      
+      
+      
+      
+
+

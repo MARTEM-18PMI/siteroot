@@ -1,0 +1,31 @@
+{% extends 'forza/base.html' %}
+<!--{% block title %} {{ blog.title }} {% endblock %}-->
+{% block content%}
+{% load static%}
+
+<div class="game-buy">
+    <h1 align="center">Добро пожаловать на сайт Forza Helper!</h1>
+    <p align="center">Цели сайта:</p>
+    <ul>
+        <li><p>Помочь новым игрокам лучше разобраться в механике тюнига в игре Forza</p></li>
+        <li><p>Дать описание существующих моделей машин</p></li>
+        <li><p>Дать возможность опытным игрокам поделиться своими вариантами улучшения их машин и другими мыслями об игре</p></li>
+    </ul>
+    <p align="center" >Становитесь гоночным мастером вместе с нами!</p>
+    <table border="1">
+    <tr><th colspan="2"></th></tr>
+    <tr>
+        <td><img src="{% static 'forza/img/standart.jpg' %}" alt="Стандарт"></td>
+        <td><img src="{% static 'forza/img/ultimate.jpg' %}" alt="Ultimate"></td>
+    </tr>
+    <tr>
+        <td><a href="https://is.gd/VyIkx3" target="_blank">Базовая версия</a></td>
+        <td><a href="https://is.gd/kC1Bax" target="_blank">Максимальное издание</a></td>
+    </tr>
+    <tr>
+        <td><p>USD$59.99+</p></td>
+        <td><p>USD$99.99+</p></td>
+    </tr>
+    </table>
+</div>
+{% endblock %}

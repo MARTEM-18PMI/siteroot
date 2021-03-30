@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1100px, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'forza/css/style.css' %}">
+    <title>{% block title %}Forza helper{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <div align="center">
+            {% if request.user.is_authenticated %}
+            <p>Здравствуйте, {{ request.user.username }}! <a href="{% url 'logout' %}?next={{ request.path }}">Выйти из аккаунта</a></p>
+            {% else %}
+            <p> <a href="{% url 'login' %}?next={{ request.path }}">Войдите</a>,
+            или создайте  <a href="{% url 'signup' %}">Новую учетную запись</a></p>
+            {% endif %}
+        </div>
+        <div class="main-header">
+            <div class="site-title">
+                <a href="{% url 'index'%}"></a>
+            </div>
+            <nav class="main-menu">
+                <ul>
+<!--                    <li><a href="#" class="link main-menu__link">Тюнинги</a></li>-->
+                    <li><a href="{% url 'index'%}" class="link main-menu__link">Главная</a></li>
+                    <li><a href="{% url 'inner'%}" class="link main-menu__link">Внутриигровой контент</a></li>
+                    <li><a href="{% url 'tunings'%}" class="link main-menu__link">Пользовательские тюнинги</a></li>
+                    <li><a href="https://forums.forzamotorsport.net/turn10_topics110_Forza-Horizon-4-Discussion.aspx" class="link main-menu__link">Форум</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="main-footer">
+      <div class="about">
+            <p>Forza Helper - это тематический проект по игре Forza Horizon 4, созданный чтобы соориентировать новых игроков и помочь разобраться в механиках и тонкостях игры.</p>
+      </div>
+      <div class="footer" style="padding-left: 30px;">
+          <h3>Мы в соц. сетях:</h3>
+            <ul>
+              <li><a href="https://vk.com/" target="_blank" class="vk"><img src="{% static 'forza/img/vk.png' %}" width="50" height="50"></a></li>
+              <li><a href="https://instagram.com" target="_blank" class="instagram"><img src="{% static 'forza/img/instagram.png' %}" width="50" height="50"></a></li>
+              <li><a href="https://twitter.com" target="_blank" class="twitter"><img src="{% static 'forza/img/twitter.png' %}" width="50" height="50"></a></li>
+            </ul>
+      </div>
+    </footer>
+</body>
+
+</html>

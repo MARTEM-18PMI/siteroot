@@ -1,0 +1,11 @@
+{% extends 'forza/base.html' %}
+{% block title %} {{ blog.title }} {% endblock %}
+{% block content%}
+<div align="center">
+    <form method="POST">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <input type="submit" value="Регистрация"/>
+    </form>
+</div>
+{% endblock %}

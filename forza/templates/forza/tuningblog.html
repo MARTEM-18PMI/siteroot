@@ -1,0 +1,44 @@
+{% extends 'forza/base.html' %}
+{% block title %} {{ blog.title }} {% endblock %}
+{% block content %}
+<div align="center">
+    <h2>
+        Блог &quot{{blog.title}}&quot; игрока {{blog.author.username}}, {{blog.created_at.date.isoformat}}
+    </h2>
+    <div align="left" style="width: 40%;" >
+        <ul >
+            {% if posts %}
+                {% for post in posts%}
+                    <li style="list-style-type: none; " >
+                        <div class='ramka'  style="background-color:antiquewhite; border: 1px solid black; margin-top: 10px;" >
+                            <h3 align="center"><i>{{ post.created_at }}</i> <b>{{ post.subject }}</b></h3>
+                            <p style="padding-left: 10px;">{{ post.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+            <div align="center">
+                <b>Здесь пока ничего нет!</b>
+            </div>
+            {% endif %}
+        </ul>
+    </div>
+    <form action="{% url 'blog_by_id' blog.id%}" method="POST">
+        {% csrf_token %}
+        <input align="center" type="text" name="subject" style="width: 30%; margin-top: 10px;" placeholder="Введите тему" value="{{ subject }}"/>
+        <br/>
+        {% if subject_error %}
+        <p style="color:red;"> {{ subject_error }} <br/> </p>
+        {% endif %}
+        <textarea name="text" style="margin-top: 10px;" maxlength="4096" rows="10" cols="80" placeholder="Введите описание">{{ text }}</textarea>
+        <br/>
+        {% if text_error%}
+        <p style="color:red;"> {{ text_error }} <br/> </p>
+        {% endif %}
+        <input type="submit" value="Create post" />
+    </form>
+    {% if blog.author_id == request.user.id %}
+
+</div>
+{% endif %}
+{% endblock %}

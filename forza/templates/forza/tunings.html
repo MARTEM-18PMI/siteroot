@@ -1,0 +1,13 @@
+{% extends 'forza/base.html' %}
+{% block title %} {{ blog.title }} {% endblock %}
+{% block content%}
+<div  align="center">
+    <h2>
+        <ul>
+            {% for blog in blogs%}
+                <li style="padding-top: 10px; list-style-type: none;">Блог: <a href="{% url 'blog_by_id' blog.id %}">{{blog.title}}</a> Автор: {{ blog.author.username }}, ({{ blog.post_count }} тюнинг(а/ов))</li>
+            {% endfor %}
+        </ul>
+    </h2>
+</div>
+{% endblock %}

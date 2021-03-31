@@ -22,9 +22,9 @@
             </div>
             {% endif %}
         </ul>
-{% if blog.author_id == request.user.id %}
-    </div>
 
+    </div>
+{% if blog.author_id == request.user.id %}
     <form action="{% url 'blog_by_id' blog.id%}" method="POST">
         {% csrf_token %}
         <input align="center" type="text" name="subject" style="width: 30%; margin-top: 10px;" placeholder="Введите тему" value="{{ subject }}"/>

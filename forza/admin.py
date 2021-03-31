@@ -51,6 +51,8 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False
 
     list_display = ('title', 'author', 'created_at', 'text')
     ordering = ('title',)

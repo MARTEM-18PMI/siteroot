@@ -9,9 +9,17 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from pathlib import Path
+import os
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'mxuudkg03sd#vny-z7*zzvl!_s(fqa&=8jrdky8_7%ra1@rx@p'

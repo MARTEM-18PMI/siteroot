@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from django.views.generic.base import TemplateView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -8,21 +9,35 @@ from django.db.models import Count
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
-from .forms import LoginForm, RegistrationForm
-from .models import Blog, Post
+from .forms import LoginForm, RegistrationForm, CommentForm
+from .models import Blog, Post, Comment
 
 
 def get_main(request):
     return render(request, 'forza/index.html', {})
 
 
-def get_inner(request):
-    return render(request, 'forza/inner-content.html', {})
+def get_inner(request, additional_context={}):
+    comments = Comment.objects.order_by('-created_at')
+    form = CommentForm()
+    context = {
+        'comments': comments,
+        'form': form,
+    }
+    if request.method == 'POST':
+        user = request.user
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            text = form.cleaned_data['text']
+            Comment(author=user, text=text, title=title).save()
+            return HttpResponseRedirect(reverse('inner'))
+
+    return render(request, 'forza/inner-content.html', context)
 
 
 def get_tunings_list(request):
     blogs = Blog.objects.annotate(post_count=Count('post')).order_by('-post_count')
-    # blogs = Blog.objects.order_by('title')
     context = {
         'blogs': blogs,
     }
@@ -123,4 +138,5 @@ def create_post(request, blog_id):
         return render_blog(request, blog_id, error_context)
     else:
         Post(blog_id=blog.id, subject=subject, text=text).save()
-        return HttpResponseRedirect(reverse('blog_by_id', kwargs={'blog_id': blog_id}))
+        return HttpResponseRedirect(reverse('blog_by_id', {'blog_id': blog_id}))
+

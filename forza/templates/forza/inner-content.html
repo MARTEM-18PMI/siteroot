@@ -10,7 +10,6 @@
     </ul>
 </div>
 <div class="in-game">
-  <h2>Автомобили</h2>
   <ol style="margin-right: 50px;">
       <li>
           <p> Передний привод</p>
@@ -62,26 +61,31 @@
             </p>
 
         </div>
-      </li>
-
-      <li>
-          <p>Полный привод (AWD)
-      </li>
-
-      <li>
-          <p>Задний привод (RWD)</p>
-      </li>
   </ol>
-  <h2>Испытания</h2>
-  <ul>
-      <li>Сезонные
-          <ul>
-              <li>Forzathon</li>
-              <li>Смелые выходки</li>
-          </ul>
-      </li>
-      <li>Постоянные</li>
-  </ul>
+{% if request.user.id %}
+  <form method="POST">
+    {% csrf_token %}
+    <table>{{ form }}</table>
+    <input type="submit" value="Отправить"/>
+  </form>
+{% else %}
+    <p>Только зарегестрированные пользователи могут оставлять комментарии.</p>
+{% endif %}
+      {% if comments %}
+        {% for comment in comments%}
+            <li style="list-style-type: none; " >
+                <div class='ramka'  style="background-color:antiquewhite; border: 1px solid black; margin-top: 10px;" >
+                    <h3 align="center"><i> Тема: {{ comment.title }}</i> </h3>
+                    <h4>Автор: {{ comment.author.username }}, Дата {{ comment.created_at }}</h4>
+                    <p style="padding-left: 10px;">{{ comment.text }}</p>
+                </div>
+            </li>
+        {% endfor %}
+     {% else %}
+     <div align="center">
+        <b>Комментариев пока нет!</b>
+     </div>
+     {% endif %}
 </div>
 {% endblock %}
 

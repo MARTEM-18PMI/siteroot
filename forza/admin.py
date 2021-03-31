@@ -50,5 +50,14 @@ class PostAdmin(admin.ModelAdmin):
     view_on_site = True
 
 
+class CommentAdmin(admin.ModelAdmin):
+
+    list_display = ('title', 'author', 'created_at', 'text')
+    ordering = ('title',)
+    fields = ('title', 'author', 'created_at', 'text')
+    readonly_fields = ('author', 'created_at')
+
+
+admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.Post, PostAdmin)

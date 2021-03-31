@@ -13,3 +13,11 @@ class RegistrationForm(forms.Form):
     password = forms.CharField(label='Пароль', min_length=3, max_length=128, widget=forms.PasswordInput)
     password_again = forms.CharField(label='Повторите пароль', min_length=3, max_length=128, widget=forms.PasswordInput)
 
+
+class CommentForm(forms.Form):
+    title = forms.CharField(label='Тема', max_length=100)
+    text = forms.CharField(widget=forms.Textarea, label="Комментарий", max_length=4096)
+
+
+
+

@@ -29,3 +29,15 @@ class Post(Model):
 
     def get_absolute_url(self):
         return reverse("blog_by_id", kwargs={'blog_id': self.blog.id})
+
+
+class Comment(Model):
+    author = ForeignKey(User, on_delete=CASCADE, default=1)
+    title = CharField(max_length=100, default='Empty')
+    text = TextField(max_length=4096)
+
+    created_at = DateTimeField('timestamp of creation', auto_now_add=True)
+
+    def __str__(self):
+        return f'Author: {str(self.author.username)} Title: {str(self.title)}'
+
